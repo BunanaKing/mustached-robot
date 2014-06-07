@@ -11,6 +11,8 @@ public class Tiling : MonoBehaviour {
 
 	public int repeatCount = 0;
 
+	public float delaySpeed = 0;
+
 	private float spriteWidth = 0f; 
 	private Camera cam;
 
@@ -26,6 +28,12 @@ public class Tiling : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(delaySpeed != 0){
+			Vector3 pos = transform.position;
+			pos.x += delaySpeed * Time.deltaTime;
+			this.transform.position = pos;
+		}
 
 		//Calculate the cameras extend (half the width) of what the camera can see in world coordinates
 		float camHorizontalExtend = cam.orthographicSize * Screen.width/Screen.height;
