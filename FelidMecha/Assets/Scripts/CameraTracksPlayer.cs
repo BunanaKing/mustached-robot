@@ -9,7 +9,7 @@ public class CameraTracksPlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject player_go = GameObject.FindGameObjectWithTag("Player");
+		GameObject player_go = GameObject.FindGameObjectWithTag("Character");
 
 		if(player_go == null) {
 			Debug.LogError("Couldn't find an object with tag 'Player'!");

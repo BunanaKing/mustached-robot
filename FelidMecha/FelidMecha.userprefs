@@ -2,7 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="60" Column="31" />
+      <File FileName="Assets\Scripts\Tiling.cs" Line="34" Column="23" />
+      <File FileName="Assets\Laser.cs" Line="8" Column="23" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="118" Column="58" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

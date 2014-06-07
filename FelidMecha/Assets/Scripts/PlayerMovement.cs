@@ -97,8 +97,49 @@ public class PlayerMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 
+		//Debug.Log("Colision con: " + collision.gameObject.name);
+
 		if(godMode)
 			return;
+		if(dead)
+			return;
+
+
+	}
+
+	void OnTriggerEnter2D(Collider2D collider){
+		//Debug.Log("Tigger enter with: " + collider.gameObject.name);
+
+//		if(godMode)
+//			return;
+//		if(dead)
+//			return;
+
+		if(collider.gameObject.layer == LayerMask.NameToLayer(Definitions.layer_obstaculos))
+		{
+			Debug.Log("Se detecta colision con un obstaculo: " + collider.gameObject.name);
+			if(godMode)
+				return;
+			if(dead)
+				return;
+
+			this.Die();
+		}
+
+	}
+
+	void Die(){
+
+		this.dead = true;
+		animator.SetTrigger("DoDie");
+		//Cambiamos la layer para que colisione con el piso
+		this.gameObject.layer = LayerMask.NameToLayer(Definitions.layer_deadCharacter);
+		BoxCollider2D boxCollider = this.GetComponent<BoxCollider2D>();
+		CircleCollider2D cirCollider = this.GetComponent<CircleCollider2D>();
+		if(boxCollider != null && cirCollider != null){
+			//boxCollider.isTrigger = true;
+			//cirCollider.isTrigger = false;
+		}
 
 	}
 }
