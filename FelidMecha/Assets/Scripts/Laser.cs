@@ -9,7 +9,8 @@ public class Laser : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	//Comentario
+
 	}
 	
 	// Update is called once per frame
