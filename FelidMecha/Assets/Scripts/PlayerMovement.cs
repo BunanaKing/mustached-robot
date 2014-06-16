@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     // Velocidad con que avanza el personaje
     public float forwardSpeed = 7f;
     // Altura del piso	
@@ -74,8 +73,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     didJump = false;
                     jumpAirTime = 0f;
-                }
-                // Debug.Log ("Jump Timer: " + jumpAirTime);
+                }                
             }
         }
     }
@@ -83,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
     // Do physics engine updates here
     void FixedUpdate()
     {
-
         if (dead)
         {
             return;
@@ -96,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
         if (didJump)
         {
             float upForce = jumpInitialForce * (1 - (jumpAirTime / jumpMaxTimer));
-            // Debug.Log("UpForce: " + upForce);
 
             rigidbody2D.AddForce(Vector2.up * upForce);
             if (state != 2)
@@ -152,14 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        // Debug.Log("Colision con: " + collision.gameObject.name);
-
-        if (godMode)
-        {
-            return;
-        }
-        if (dead)
+        if (godMode || dead)
         {
             return;
         }
@@ -167,39 +156,22 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        // Debug.Log("Tigger enter with: " + collider.gameObject.name);
-
-        if (collider.gameObject.layer == LayerMask.NameToLayer(Definitions.layer_obstaculos))
+        if (collider.gameObject.layer == LayerMask.NameToLayer(Definitions.obstacles_layer))
         {
-            Debug.Log("Se detecta colision con un obstaculo: " + collider.gameObject.name);
-
-            if (godMode)
+            if (godMode || dead)
             {
                 return;
             }
-            if (dead)
-            {
-                return;
-            }
-
             this.Die();
         }
     }
 
     void Die()
     {
-
         this.dead = true;
         animator.SetTrigger("DoDie");
 
         // Cambiamos la layer para que colisione con el piso
-        this.gameObject.layer = LayerMask.NameToLayer(Definitions.layer_deadCharacter);
-        BoxCollider2D boxCollider = this.GetComponent<BoxCollider2D>();
-        CircleCollider2D cirCollider = this.GetComponent<CircleCollider2D>();
-        if (boxCollider != null && cirCollider != null)
-        {
-            //boxCollider.isTrigger = true;
-            //cirCollider.isTrigger = false;
-        }
+        this.gameObject.layer = LayerMask.NameToLayer(Definitions.deadCharacter_layer);        
     }
 }

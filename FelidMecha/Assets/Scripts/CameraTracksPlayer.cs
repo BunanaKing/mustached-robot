@@ -3,9 +3,7 @@ using System.Collections;
 
 public class CameraTracksPlayer : MonoBehaviour
 {
-
     Transform player;
-
     float offsetX;
 
     // Use this for initialization
@@ -20,7 +18,6 @@ public class CameraTracksPlayer : MonoBehaviour
         }
 
         player = player_go.transform;
-
         offsetX = transform.position.x - player.position.x;
     }
 

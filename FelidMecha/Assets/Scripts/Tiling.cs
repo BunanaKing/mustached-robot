@@ -5,7 +5,6 @@ using System.Collections;
 
 public class Tiling : MonoBehaviour
 {
-
     // The offset
     public int offsetX = 2;
     public int numberOfBackgrounds = 6;
@@ -29,7 +28,6 @@ public class Tiling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (delaySpeed != 0)
         {
             Vector3 pos = transform.position;
@@ -52,6 +50,5 @@ public class Tiling : MonoBehaviour
             transform.position = pos;
             repeatCount++;
         }
-
     }
 }

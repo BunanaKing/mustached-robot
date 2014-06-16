@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Laser : MonoBehaviour
 {
-
     public SpriteRenderer topEnd;
     public SpriteRenderer laser;
     public SpriteRenderer bottomEnd;
