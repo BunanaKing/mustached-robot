@@ -32,7 +32,7 @@ public class Tiling : MonoBehaviour
         {
             Vector3 pos = transform.position;
             pos.x += delaySpeed * Time.deltaTime;
-            this.transform.position = pos;
+            transform.position = pos;
         }
 
         // Calculate the cameras extend (half the width) of what the camera can see in world coordinates

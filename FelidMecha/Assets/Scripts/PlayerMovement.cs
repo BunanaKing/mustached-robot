@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return (transform.position.y <= this.minHeight);
+        return (transform.position.y <= minHeight);
     }
 
     // Do Graphic & Input updates here
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         // Button 0 es el click izquierdo, y el tap en mobile
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (this.IsGrounded())
+            if (IsGrounded())
             {
                 if (!didJump)
                 {
@@ -82,9 +82,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (dead)
-        {
-            return;
-        }
+            return;      
 
         Vector2 vel = rigidbody2D.velocity;
         vel.x = forwardSpeed;
@@ -149,29 +147,26 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (godMode || dead)
-        {
-            return;
-        }
+            return;        
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer(Definitions.obstacles_layer))
         {
-            if (godMode || dead)
-            {
+            if (godMode || dead)            
                 return;
-            }
-            this.Die();
+            
+            Die();
         }
     }
 
     void Die()
     {
-        this.dead = true;
+        dead = true;
         animator.SetTrigger("DoDie");
 
         // Cambiamos la layer para que colisione con el piso
-        this.gameObject.layer = LayerMask.NameToLayer(Definitions.deadCharacter_layer);        
+        gameObject.layer = LayerMask.NameToLayer(Definitions.deadCharacter_layer);        
     }
 }
