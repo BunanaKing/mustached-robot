@@ -1,32 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraTracksPlayer : MonoBehaviour {
+public class CameraTracksPlayer : MonoBehaviour
+{
+    Transform player;
+    float offsetX;
 
-	Transform player;
+    // Use this for initialization
+    void Start()
+    {
+        GameObject player_go = GameObject.FindGameObjectWithTag("Character");
 
-	float offsetX;
+        if (player_go == null)
+        {
+            Debug.LogError("Couldn't find an object with tag 'Player'!");
+            return;
+        }
 
-	// Use this for initialization
-	void Start () {
-		GameObject player_go = GameObject.FindGameObjectWithTag("Character");
+        player = player_go.transform;
+        offsetX = transform.position.x - player.position.x;
+    }
 
-		if(player_go == null) {
-			Debug.LogError("Couldn't find an object with tag 'Player'!");
-			return;
-		}
-
-		player = player_go.transform;
-
-		offsetX = transform.position.x - player.position.x;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(player != null) {
-			Vector3 pos = transform.position;
-			pos.x = player.position.x + offsetX;
-			transform.position = pos;
-		}
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (player != null)
+        {
+            Vector3 pos = transform.position;
+            pos.x = player.position.x + offsetX;
+            transform.position = pos;
+        }
+    }
 }
