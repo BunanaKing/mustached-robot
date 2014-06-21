@@ -13,7 +13,7 @@ public class CameraTracksPlayer : MonoBehaviour
 
         if (player_go == null)
         {
-            Debug.LogError("Couldn't find an object with tag 'Player'!");
+            Debug.LogError("Couldn't find an object with tag 'Character'!");
             return;
         }
 
