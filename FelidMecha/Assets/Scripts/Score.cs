@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Score : MonoBehaviour {
+public class Score : MonoBehaviour
+{
 
     static int distance = 0;
-    static int highDistance = 0;    
+    static int highDistance = 0;
     static int cookies = 0;
 
     Transform player;
@@ -20,7 +21,7 @@ public class Score : MonoBehaviour {
             Debug.LogError("Couldn't find an object with tag 'Character'!");
             return;
         }
-        player = player_go.transform;        
+        player = player_go.transform;
     }
 
     static public void AddCookie()
